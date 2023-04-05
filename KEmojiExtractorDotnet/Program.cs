@@ -154,9 +154,12 @@ namespace KEmojiExtractorDotnet
                     animatedWebP[0].AnimationIterations = 0;
 
                     //resize
-                    foreach (var img in animatedWebP)
+                    if (width >= 0 && height >= 0)
                     {
-                        img.Resize(128, 128);
+                        foreach (var img in animatedWebP)
+                        {
+                            img.Resize(width, height);
+                        }
                     }
 
                     animatedWebP.Write(gifFileName, MagickFormat.Gif);
